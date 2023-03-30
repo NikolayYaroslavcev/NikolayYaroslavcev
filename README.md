@@ -1,4 +1,12 @@
 # 💫 About Me:
+Hi, I am Nikolai Yaroslavtsev. I have 
+experience in creating SPA using 
+React/Redux/TypesScript individually 
+and in team. At the moment I am 
+studying React Native and the book 
+Grokking Algorithms and practicing 
+with tutor in English.
+Open to your suggestions.
 
 ## 🌐 Socials:
 [![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.gg/NikolayYaroslavcev#5114) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/mwlite/in/%D0%BD%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9-%D1%8F%D1%80%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D1%86%D0%B5%D0%B2-a6248a241) 
