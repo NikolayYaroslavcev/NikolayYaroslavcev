@@ -8,19 +8,17 @@ Senior Full-Stack Developer (Frontend Focus) — 7+ лет опыта. React, Ne
 
 ## 🚀 Featured projects
 
-**[MedChat](https://github.com/NikolayYaroslavcev/MedChat)** — care-coordination dashboard: live WebSocket support chat (optimistic sends, offline queue, auto-reconnect) + server-rendered meetings overview. Next.js App Router, TypeScript.
+**[snap](https://github.com/NikolayYaroslavcev/snap)** — take-home assignment: rebuilt the [snapbuild.ru](https://snapbuild.ru/) landing page (11 sections) on Next.js and extended it with 5 new sections (pricing, testimonials, case studies, and more).
 
 **[foundation](https://github.com/NikolayYaroslavcev/foundation)** — FastAPI + PostgreSQL backend turning payment-provider webhooks into active subscriptions, idempotent under retried/duplicate deliveries. Async SQLAlchemy 2.x, Alembic, Docker.
 
+**[MedChat](https://github.com/NikolayYaroslavcev/MedChat)** — care-coordination dashboard: live WebSocket support chat (optimistic sends, offline queue, auto-reconnect) + server-rendered meetings overview. Next.js App Router, TypeScript.
+
+**[ai-overlay-test](https://github.com/NikolayYaroslavcev/ai-overlay-test)** — take-home assignment: always-on-top desktop chat overlay streaming AI-style responses over WebSocket. Tauri 2 (Rust) + Vue 3 + TypeScript + Pinia.
+
+**[lesta](https://github.com/NikolayYaroslavcev/lesta)** — frontend test assignment: React + TypeScript + Vite app with routing, animations, and custom hooks.
+
 **[next-pizza](https://github.com/NikolayYaroslavcev/next-pizza)** — pizza-delivery storefront clone (menu, cart, checkout). Next.js App Router, TypeScript.
-
-**[belwooddoors](https://github.com/NikolayYaroslavcev/belwooddoors)** — client website for a doors manufacturer. SCSS.
-
-**[realestate-website](https://github.com/NikolayYaroslavcev/realestate-website)** — real estate listings website. JavaScript.
-
-**[exceptional-dining](https://github.com/NikolayYaroslavcev/exceptional-dining)** — restaurant/dining website. TypeScript.
-
-**[TodoList-React-TypeScript-Zustand-ViteJS](https://github.com/NikolayYaroslavcev/TodoList-React-TypeScript-Zustand-ViteJS)** — todo app demonstrating React + TypeScript + Zustand state management, Vite build.
 
 Больше проектов — во вкладке [Repositories](https://github.com/NikolayYaroslavcev?tab=repositories).
 
