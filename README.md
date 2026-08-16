@@ -14,6 +14,14 @@ Senior Full-Stack Developer (Frontend Focus) — 7+ лет опыта. React, Ne
 
 **[next-pizza](https://github.com/NikolayYaroslavcev/next-pizza)** — pizza-delivery storefront clone (menu, cart, checkout). Next.js App Router, TypeScript.
 
+**[belwooddoors](https://github.com/NikolayYaroslavcev/belwooddoors)** — client website for a doors manufacturer. SCSS.
+
+**[realestate-website](https://github.com/NikolayYaroslavcev/realestate-website)** — real estate listings website. JavaScript.
+
+**[exceptional-dining](https://github.com/NikolayYaroslavcev/exceptional-dining)** — restaurant/dining website. TypeScript.
+
+**[TodoList-React-TypeScript-Zustand-ViteJS](https://github.com/NikolayYaroslavcev/TodoList-React-TypeScript-Zustand-ViteJS)** — todo app demonstrating React + TypeScript + Zustand state management, Vite build.
+
 Больше проектов — во вкладке [Repositories](https://github.com/NikolayYaroslavcev?tab=repositories).
 
 ## 💻 Tech stack
