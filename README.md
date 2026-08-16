@@ -22,7 +22,3 @@ Senior Full-Stack Developer (Frontend Focus) — 7+ лет опыта. React, Ne
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-## 📊 GitHub stats
-
-![Stats](https://github-readme-stats.vercel.app/api?username=NikolayYaroslavcev&show_icons=true&theme=default&hide_border=true&count_private=true)
-![Streak](https://github-readme-streak-stats.herokuapp.com/?user=NikolayYaroslavcev&hide_border=true)
