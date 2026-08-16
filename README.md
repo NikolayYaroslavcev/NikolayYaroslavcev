@@ -4,7 +4,7 @@ Senior Full-Stack Developer (Frontend Focus) — 7+ лет опыта. React, Ne
 
 Работал над SaaS, финтех и enterprise-продуктами, а также AI-powered решениями (LLM-инструменты в инженерном процессе).
 
-📫 Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · 💼 [LinkedIn](https://www.linkedin.com/in/николай-ярославцев-a6248a241/)
+📫 Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · 💼 [LinkedIn](https://www.linkedin.com/in/nikolay-yaroslavtsev-a6248a241/)
 
 ## 🚀 Featured projects
 
