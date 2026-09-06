@@ -8,6 +8,10 @@ Senior Full-Stack Developer (Frontend Focus) — 7+ лет опыта. React, Ne
 
 ## 🚀 Featured projects
 
+**[CareerOS](https://github.com/NikolayYaroslavcev/carrer-os-yr)** — AI-powered career workspace: aggregates vacancies from multiple job boards (HH, Greenhouse, Lever, Ashby, Workday, Teamtailor), dedupes and persists them, runs AI matching against your resume, and surfaces ranked recommendations via a dashboard and Telegram. Turborepo monorepo — Fastify backend, BullMQ worker, Next.js dashboard, PostgreSQL, Redis, Docker.
+
+**[Task Manager](https://github.com/NikolayYaroslavcev/act-comp)** — multi-user task/list manager built for a technical assessment: Kanban and list views, dependency-aware scheduling, per-task timers with calendar-aware time accounting, notifications, attachments, comments, activity log, version rollback, CSV/PDF/Excel export. Next.js 16 App Router, TypeScript (strict), Redux Toolkit + RTK Query, Zod, Clean-Architecture-shaped layers, 2000+ tests.
+
 **[snap](https://github.com/NikolayYaroslavcev/snap)** — take-home assignment: rebuilt the [snapbuild.ru](https://snapbuild.ru/) landing page (11 sections) on Next.js and extended it with 5 new sections (pricing, testimonials, case studies, and more).
 
 **[foundation](https://github.com/NikolayYaroslavcev/foundation)** — FastAPI + PostgreSQL backend turning payment-provider webhooks into active subscriptions, idempotent under retried/duplicate deliveries. Async SQLAlchemy 2.x, Alembic, Docker.
