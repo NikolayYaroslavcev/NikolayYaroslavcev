@@ -12,6 +12,8 @@ Senior Full-Stack Developer (Frontend Focus) — 7+ лет опыта. React, Ne
 
 **[Task Manager](https://github.com/NikolayYaroslavcev/act-comp)** — мультипользовательский менеджер задач для технического задания: Kanban и списки, зависимости между задачами, таймеры с учётом календаря, уведомления, вложения, комментарии, журнал активности, откат версий, экспорт в CSV/PDF/Excel. Next.js 16 App Router, TypeScript strict, Redux Toolkit + RTK Query, Zod, Clean Architecture, 2000+ тестов.
 
+**[ChaChat Funnel](https://github.com/NikolayYaroslavcev/chachat-funnel)** — тестовое full-stack задание: воронка привлечения для AI-чата ChaChat (квиз → email → пейволл → оплата → установка) с упором на корректность сценария, идентификацию пользователя, атрибуцию, аналитику и логику платежей при повторных и конкурентных запросах. Next.js 16 App Router, React 19, TypeScript, PostgreSQL, Prisma 6, Docker Compose, Vitest на реальной БД.
+
 **[foundation](https://github.com/NikolayYaroslavcev/foundation)** — бэкенд на FastAPI + PostgreSQL, превращающий вебхуки платёжного провайдера в активные подписки, устойчивый к повторным и дублирующимся доставкам. Async SQLAlchemy 2.x, Alembic, Docker.
 
 **[MedChat](https://github.com/NikolayYaroslavcev/MedChat)** — дашборд для координации медицинской поддержки: живой WebSocket-чат (оптимистичная отправка, офлайн-очередь, автопереподключение) и серверный обзор встреч. Next.js App Router, TypeScript.
