@@ -22,6 +22,8 @@ Senior Full-Stack Developer (Frontend Focus) — 7+ лет опыта. React, Ne
 
 **[snap](https://github.com/NikolayYaroslavcev/snap)** — тестовое задание: пересборка лендинга [snapbuild.ru](https://snapbuild.ru/) (11 секций) на Next.js + 5 новых секций (тарифы, отзывы, кейсы и другое).
 
+**[durak-multiplayer](https://github.com/NikolayYaroslavcev/durak-multiplayer)** — тестовое задание: каркас multiplayer-игровой платформы (lobby → matchmaking → комната → игра) с «Дураком» на двух игроков. Server-authoritative валидация ходов, hidden state на клиенте, reconnect с восстановлением сессии. NestJS + Socket.IO на бэке, Next.js + Phaser на фронте, TypeScript.
+
 Остальное — во вкладке [Repositories](https://github.com/NikolayYaroslavcev?tab=repositories).
 
 ## Стек
