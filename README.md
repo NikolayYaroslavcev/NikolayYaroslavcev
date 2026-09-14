@@ -10,6 +10,8 @@ Senior Full-Stack Developer (Frontend Focus) — 7+ лет опыта. React, Ne
 
 **[CareerOS](https://github.com/NikolayYaroslavcev/carrer-os-yr)** — карьерный AI-воркспейс: агрегирует вакансии с HH, Greenhouse, Lever, Ashby, Workday и Teamtailor, дедуплицирует их, матчит с резюме через AI и отдаёт ранжированные рекомендации в дашборде и Telegram. Turborepo-монорепо: Fastify, BullMQ-воркер, Next.js, PostgreSQL, Redis, Docker.
 
+**[Telegram Desktop Client](https://github.com/NikolayYaroslavcev/telegram-desktop-client)** — независимый десктопный клиент Telegram (не официальное приложение): авторизация по номеру телефона с 2FA, личные чаты, текст, ответы с цитированием, вложения (изображения/файлы), реалтайм-обновления через TDLib, локальный кэш сообщений в SQLite с «надгробиями» для удалённых. Electron, React, TypeScript, TDLib.
+
 **[Task Manager](https://github.com/NikolayYaroslavcev/act-comp)** — мультипользовательский менеджер задач для технического задания: Kanban и списки, зависимости между задачами, таймеры с учётом календаря, уведомления, вложения, комментарии, журнал активности, откат версий, экспорт в CSV/PDF/Excel. Next.js 16 App Router, TypeScript strict, Redux Toolkit + RTK Query, Zod, Clean Architecture, 2000+ тестов.
 
 **[ChaChat Funnel](https://github.com/NikolayYaroslavcev/chachat-funnel)** — тестовое full-stack задание: воронка привлечения для AI-чата ChaChat (квиз → email → пейволл → оплата → установка) с упором на корректность сценария, идентификацию пользователя, атрибуцию, аналитику и логику платежей при повторных и конкурентных запросах. Next.js 16 App Router, React 19, TypeScript, PostgreSQL, Prisma 6, Docker Compose, Vitest на реальной БД.
