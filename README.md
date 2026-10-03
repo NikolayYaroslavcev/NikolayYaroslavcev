@@ -1,39 +1,79 @@
 # Николай Ярославцев
 
-Senior Full-Stack Developer (Frontend Focus) — 7+ лет опыта. React, Next.js, TypeScript на фронте; Node.js/NestJS, PostgreSQL, GraphQL, REST, WebSocket, Docker на бэке.
+Senior Full-Stack Developer, упор на фронтенд. 7+ лет в коммерческой разработке: SaaS, финтех, enterprise.
+React, Next.js, TypeScript на фронте; Node.js/NestJS, PostgreSQL, Redis, WebSocket, Docker на бэке.
 
-Делал SaaS, финтех и enterprise-продукты, попутно внедряя AI-инструменты в сам инженерный процесс.
+Больше всего люблю задачи, где UI упирается в сложный бэкенд: реалтайм и конкурентные правки, идемпотентные платежи, офлайн-очереди, большие объёмы данных. Архитектурные решения записываю (ADR, README с разбором компромиссов), тесты гоняю в CI, а не только локально.
 
-📫 Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · 💼 [LinkedIn](https://www.linkedin.com/in/nikolay-yaroslavtsev-a6248a241/)
+Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www.linkedin.com/in/nikolay-yaroslavtsev-a6248a241/)
 
-## Избранные проекты
+## Главный проект
 
-**[CareerOS](https://github.com/NikolayYaroslavcev/carrer-os-yr)** — карьерный AI-воркспейс: агрегирует вакансии с HH, Greenhouse, Lever, Ashby, Workday и Teamtailor, дедуплицирует их, матчит с резюме через AI и отдаёт ранжированные рекомендации в дашборде и Telegram. Turborepo-монорепо: Fastify, BullMQ-воркер, Next.js, PostgreSQL, Redis, Docker.
+### [CareerOS](https://github.com/NikolayYaroslavcev/carrer-os-yr)
 
-**[Telegram Desktop Client](https://github.com/NikolayYaroslavcev/telegram-desktop-client)** — независимый десктопный клиент Telegram (не официальное приложение): авторизация по номеру телефона с 2FA, личные чаты, текст, ответы с цитированием, вложения (изображения/файлы), реалтайм-обновления через TDLib, локальный кэш сообщений в SQLite с «надгробиями» для удалённых. Electron, React, TypeScript, TDLib.
+Карьерный AI-воркспейс, сделан в одиночку. Собирает вакансии с джоб-бордов и ATS, дедуплицирует, матчит с резюме через AI и показывает ранжированные рекомендации в дашборде и Telegram.
 
-**[Task Manager](https://github.com/NikolayYaroslavcev/act-comp)** — мультипользовательский менеджер задач для технического задания: Kanban и списки, зависимости между задачами, таймеры с учётом календаря, уведомления, вложения, комментарии, журнал активности, откат версий, экспорт в CSV/PDF/Excel. Next.js 16 App Router, TypeScript strict, Redux Toolkit + RTK Query, Zod, Clean Architecture, 2000+ тестов.
+- 28 источников вакансий (HH.ru, Greenhouse, Lever, Ashby, Workday, LinkedIn, Telegram-каналы и другие), у каждого свой fetcher, маппер, нормализатор и набор тестов за общим интерфейсом `Provider`
+- AI-матчинг через пять взаимозаменяемых провайдеров (OpenAI, Anthropic, Groq, Gemini, OpenRouter) с цепочками фолбэков
+- API, воркер и дашборд не вызывают друг друга напрямую, а общаются через Postgres и очереди BullMQ, поэтому синхронизация и AI-анализ не блокируют UI
+- 39 ADR и 363+ тестов (unit, integration, contract, e2e), которые Turborepo прогоняет по каждому пакету
 
-**[Collaborative Todo List](https://github.com/NikolayYaroslavcev/collaborative-todo-list)** — тестовое задание: реалтайм мультипользовательский список задач. Конфликты правок разрешаются server-ordered оптимистичной конкурентностью по версии (`UPDATE ... WHERE version = ?`), конкурентный reorder — fractional-index позициями и Postgres advisory lock, плюс офлайн-очередь с идемпотентными операциями и presence (кто онлайн, кто что редактирует). NestJS, Prisma, PostgreSQL, Socket.IO на бэке; Next.js, TypeScript, dnd-kit на фронте.
+`TypeScript` `Fastify` `Next.js` `BullMQ` `PostgreSQL` `Redis` `Turborepo` `Docker`
 
-**[ChaChat Funnel](https://github.com/NikolayYaroslavcev/chachat-funnel)** — тестовое full-stack задание: воронка привлечения для AI-чата ChaChat (квиз → email → пейволл → оплата → установка) с упором на корректность сценария, идентификацию пользователя, атрибуцию, аналитику и логику платежей при повторных и конкурентных запросах. Next.js 16 App Router, React 19, TypeScript, PostgreSQL, Prisma 6, Docker Compose, Vitest на реальной БД.
+## Инженерные задачи
 
-**[foundation](https://github.com/NikolayYaroslavcev/foundation)** — бэкенд на FastAPI + PostgreSQL, превращающий вебхуки платёжного провайдера в активные подписки, устойчивый к повторным и дублирующимся доставкам. Async SQLAlchemy 2.x, Alembic, Docker.
+Тестовые задания и pet-проекты, в которых самое интересное спрятано под UI. В каждом README есть разбор решений.
 
-**[MedChat](https://github.com/NikolayYaroslavcev/MedChat)** — дашборд для координации медицинской поддержки: живой WebSocket-чат (оптимистичная отправка, офлайн-очередь, автопереподключение) и серверный обзор встреч. Next.js App Router, TypeScript.
+**[Collaborative Todo List](https://github.com/NikolayYaroslavcev/collaborative-todo-list)**: реалтайм-список задач для нескольких пользователей.
+Конфликт правок решает один атомарный `UPDATE ... WHERE version = ?`, а не клиентские таймстемпы. Порядок задач хранится в fractional-index строках, параллельные перестановки сериализует advisory lock в Postgres, и это работает при любом числе инстансов бэкенда. Офлайн-очередь на клиенте, идемпотентность по `operationId` с записью в БД, presence, права проверяются на сервере на каждом REST- и WS-входе.
+`NestJS` `Prisma` `PostgreSQL` `Socket.IO` `Next.js` `dnd-kit`
 
-**[ai-overlay-test](https://github.com/NikolayYaroslavcev/ai-overlay-test)** — тестовое задание: десктопный оверлей-чат поверх всех окон, стримит AI-ответы по WebSocket. Tauri 2 (Rust) + Vue 3 + TypeScript + Pinia.
+**[Million Items Manager](https://github.com/NikolayYaroslavcev/million-items-manager)** · [демо](https://million-items-manager.onrender.com): два списка поверх миллиона элементов с фильтром, подгрузкой порциями и drag-and-drop сортировкой.
+Состояние живёт на сервере и общее для всех открытых вкладок, изменения расходятся по SSE. В CI проходят lint, typecheck, unit и integration, тесты на полном наборе в миллион элементов, Playwright против production-сборки, минутная нагрузка на 200 соединений и smoke Docker-образа с проверкой корректной остановки.
+`Express` `React` `Vite` `zod` `Vitest` `Playwright` `pnpm workspaces`
 
-**[snap](https://github.com/NikolayYaroslavcev/snap)** — тестовое задание: пересборка лендинга [snapbuild.ru](https://snapbuild.ru/) (11 секций) на Next.js + 5 новых секций (тарифы, отзывы, кейсы и другое).
+**[Telegram Desktop Client](https://github.com/NikolayYaroslavcev/telegram-desktop-client)**: независимый десктопный клиент Telegram на TDLib.
+Вход по телефону с 2FA, личные чаты, ответы с цитатой, вложения, реалтайм-обновления, восстановление после обрыва сети. Сообщения кэшируются в SQLite, а удалённые остаются видны с пометкой «удалено».
+`Electron` `React` `TypeScript` `TDLib` `SQLite`
 
-**[durak-multiplayer](https://github.com/NikolayYaroslavcev/durak-multiplayer)** — тестовое задание: каркас multiplayer-игровой платформы (lobby → matchmaking → комната → игра) с «Дураком» на двух игроков. Server-authoritative валидация ходов, hidden state на клиенте, reconnect с восстановлением сессии. NestJS + Socket.IO на бэке, Next.js + Phaser на фронте, TypeScript.
+**[ChaChat Funnel](https://github.com/NikolayYaroslavcev/chachat-funnel)**: воронка квиз → email → пейволл → оплата → установка для AI-чата.
+Главное здесь корректность, а не вёрстка: идентификация пользователя, атрибуция, аналитика событий и платежи, которые не дублируются при повторных и конкурентных запросах. Тесты идут на настоящем Postgres, без моков БД.
+`Next.js 16` `React 19` `PostgreSQL` `Prisma` `Docker Compose` `Vitest`
 
-Остальное — во вкладке [Repositories](https://github.com/NikolayYaroslavcev?tab=repositories).
+**[Durak Multiplayer](https://github.com/NikolayYaroslavcev/durak-multiplayer)**: каркас мультиплеерной игровой платформы (лобби → матчмейкинг → комната → игра) с «Дураком» на двоих.
+Правила вынесены в пакет `game-core` из чистых детерминированных функций без зависимостей от React, Phaser или NestJS. Ходы валидирует сервер, клиент видит только свою часть состояния, после переподключения сессия восстанавливается.
+`NestJS` `Socket.IO` `Next.js` `Phaser` `pnpm monorepo`
+
+**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [играть](https://NikolayYaroslavcev.github.io/chicken-crossing-pixi/): пошаговая crash-игра в духе Chicken Road.
+Движок написан на чистом TypeScript: он решает исход раунда по seeded RNG и ничего не знает о рендере, за чем следит правило ESLint. Сцена на PixiJS только анимирует то, что уже решил движок, а store связывает их через узкий интерфейс. Mock-движок реализует тот же `GameEngine`, что и будущий серверный.
+`PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
+
+**[Task Manager](https://github.com/NikolayYaroslavcev/act-comp)**: многопользовательский менеджер задач с Kanban, зависимостями между задачами, таймерами с учётом рабочего календаря, откатом версий и экспортом в CSV/PDF/Excel.
+Слои entities / features / widgets: бизнес-логика вынесена в чистые функции, API-роуты тонкие (auth → фича с проверкой прав → JSON). 2000+ тестов.
+`Next.js 16` `Redux Toolkit` `RTK Query` `Zod` `shadcn/ui`
+
+**[foundation](https://github.com/NikolayYaroslavcev/foundation)**: вебхуки платёжного провайдера превращаются в подписки, и повторные или дублирующиеся доставки ничего не ломают.
+Платёж и подписка пишутся в одной транзакции через `INSERT ... ON CONFLICT`, так что ситуация «платёж записан, подписка не продлена» невозможна по построению.
+`Python` `FastAPI` `async SQLAlchemy 2` `Alembic` `PostgreSQL`
+
+**[MedChat](https://github.com/NikolayYaroslavcev/MedChat)**: дашборд медицинской поддержки.
+WebSocket-чат с оптимистичной отправкой, гарантией порядка сообщений, офлайн-очередью и автопереподключением написан вручную, без клиентских библиотек. Список встреч префетчится на сервере и гидрируется на клиенте.
+`Next.js` `TanStack Query` `WebSocket` `Tailwind CSS 4`
+
+## Продуктовый фронтенд
+
+**[VRental](https://github.com/NikolayYaroslavcev/vr-rental)** · [демо](https://nikolayyaroslavcev.github.io/vr-rental/): сайт моего бывшего проката VR-шлемов и Telegram-бот для заявок. Статический экспорт Next.js, SEO с JSON-LD, каталог из 80+ игр. Бот на голом `fetch` и long polling, без зависимостей.
+`Next.js 16` `Tailwind CSS 4` `Framer Motion`
+
+**[AI Overlay](https://github.com/NikolayYaroslavcev/ai-overlay-test)**: десктопный оверлей-чат поверх всех окон, AI-ответы приходят стримом по WebSocket.
+`Tauri 2` `Rust` `Vue 3` `Pinia`
+
+Остальное лежит во вкладке [Repositories](https://github.com/NikolayYaroslavcev?tab=repositories).
 
 ## Стек
 
-**Frontend:** React, Next.js, TypeScript, Redux Toolkit / RTK Query, TanStack Query, Vue 3, Tailwind CSS, SASS
+**Frontend:** React, Next.js, TypeScript, Redux Toolkit / RTK Query, TanStack Query, Zustand, Vue 3, PixiJS, Tailwind CSS
 
-**Backend:** Node.js, NestJS, Fastify, FastAPI, PostgreSQL, Redis, GraphQL, REST, WebSocket, BullMQ
+**Backend:** Node.js, NestJS, Fastify, Express, FastAPI, PostgreSQL, Prisma, Redis, BullMQ, GraphQL, REST, WebSocket / Socket.IO
 
-**Инструменты:** Docker, Turborepo, Zod, Figma
+**Качество и инфраструктура:** Vitest, Jest, Playwright, GitHub Actions, Docker, Turborepo, pnpm workspaces
