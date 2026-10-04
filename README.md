@@ -1,5 +1,7 @@
 # Николай Ярославцев
 
+**Русский** · [English](README.en.md)
+
 Senior Full-Stack Developer, упор на фронтенд. 7+ лет в коммерческой разработке: SaaS, финтех, enterprise.
 React, Next.js, TypeScript на фронте; Node.js/NestJS, PostgreSQL, Redis, WebSocket, Docker на бэке.
 
@@ -9,7 +11,7 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 
 ## Главный проект
 
-### [CareerOS](https://github.com/NikolayYaroslavcev/carrer-os-yr)
+### [CareerOS](https://github.com/NikolayYaroslavcev/career-os)
 
 Карьерный AI-воркспейс, сделан в одиночку. Собирает вакансии с джоб-бордов и ATS, дедуплицирует, матчит с резюме через AI и показывает ранжированные рекомендации в дашборде и Telegram.
 
