@@ -39,7 +39,7 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 `Electron` `React` `TypeScript` `TDLib` `SQLite`
 
 **[ChaChat Funnel](https://github.com/NikolayYaroslavcev/chachat-funnel)**: воронка квиз → email → пейволл → оплата → установка для AI-чата.
-Главное здесь корректность, а не вёрстка: идентификация пользователя, атрибуция, аналитика событий и платежи, которые не дублируются при повторных и конкурентных запросах. Тесты идут на настоящем Postgres, без моков БД.
+Основная работа ушла в корректность: идентификация пользователя, атрибуция, аналитика событий и платежи, которые не дублируются при повторных и конкурентных запросах. Тесты идут на настоящем Postgres, без моков БД.
 `Next.js 16` `React 19` `PostgreSQL` `Prisma` `Docker Compose` `Vitest`
 
 **[Durak Multiplayer](https://github.com/NikolayYaroslavcev/durak-multiplayer)**: каркас мультиплеерной игровой платформы (лобби → матчмейкинг → комната → игра) с «Дураком» на двоих.

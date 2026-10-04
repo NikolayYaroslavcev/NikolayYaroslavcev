@@ -5,7 +5,7 @@
 Senior Full-Stack Developer with a frontend focus. 7+ years of commercial development: SaaS, fintech, enterprise.
 React, Next.js, TypeScript on the frontend; Node.js/NestJS, PostgreSQL, Redis, WebSocket, Docker on the backend.
 
-I enjoy work where the UI runs into a hard backend problem: realtime and concurrent edits, idempotent payments, offline queues, large data volumes. I write architecture decisions down (ADRs, READMEs that explain the trade-offs) and run tests in CI, not just locally.
+I enjoy work where the UI runs into a hard backend problem: realtime and concurrent edits, idempotent payments, offline queues, large data volumes. I write architecture decisions down (ADRs, READMEs that explain the trade-offs) and run tests in CI as well as locally.
 
 Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www.linkedin.com/in/nikolay-yaroslavtsev-a6248a241/)
 
@@ -24,10 +24,10 @@ An AI career workspace, built solo. It collects vacancies from job boards and AT
 
 ## Engineering problems
 
-Test assignments and pet projects where the interesting part sits under the UI. Every README walks through the decisions.
+Test assignments and pet projects where the interesting part is under the UI. Each README explains the decisions behind it.
 
 **[Collaborative Todo List](https://github.com/NikolayYaroslavcev/collaborative-todo-list)**: a realtime task list for multiple users.
-Edit conflicts are resolved by a single atomic `UPDATE ... WHERE version = ?`, not by client timestamps. Task order is stored as fractional-index strings, concurrent reorders are serialized by a Postgres advisory lock, and this holds for any number of backend instances. Client-side offline queue, idempotency by `operationId` persisted in the DB, presence, and permissions checked on the server at every REST and WS entry point.
+Edit conflicts are resolved by a single atomic `UPDATE ... WHERE version = ?` instead of client timestamps. Task order is stored as fractional-index strings, concurrent reorders are serialized by a Postgres advisory lock, and this holds for any number of backend instances. Client-side offline queue, idempotency by `operationId` persisted in the DB, presence, and permissions checked on the server at every REST and WS entry point.
 `NestJS` `Prisma` `PostgreSQL` `Socket.IO` `Next.js` `dnd-kit`
 
 **[Million Items Manager](https://github.com/NikolayYaroslavcev/million-items-manager)** · [demo](https://million-items-manager.onrender.com): two lists over a million items with filtering, chunked loading and drag-and-drop sorting.
@@ -39,7 +39,7 @@ Phone login with 2FA, private chats, quoted replies, attachments, realtime updat
 `Electron` `React` `TypeScript` `TDLib` `SQLite`
 
 **[ChaChat Funnel](https://github.com/NikolayYaroslavcev/chachat-funnel)**: a quiz → email → paywall → payment → install funnel for an AI chat app.
-The point is correctness, not layout: user identification, attribution, event analytics and payments that are never duplicated under retried or concurrent requests. Tests run against a real Postgres, with no DB mocks.
+Most of the work went into correctness: user identification, attribution, event analytics and payments that are never duplicated under retried or concurrent requests. Tests run against a real Postgres, with no DB mocks.
 `Next.js 16` `React 19` `PostgreSQL` `Prisma` `Docker Compose` `Vitest`
 
 **[Durak Multiplayer](https://github.com/NikolayYaroslavcev/durak-multiplayer)**: the skeleton of a multiplayer game platform (lobby → matchmaking → room → game) with two-player Durak.
