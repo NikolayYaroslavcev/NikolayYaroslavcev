@@ -7,6 +7,8 @@ React, Next.js, TypeScript on the frontend; Node.js/NestJS, PostgreSQL, Redis, W
 
 I enjoy work where the UI runs into a hard backend problem: realtime and concurrent edits, idempotent payments, offline queues, large data volumes. I write architecture decisions down (ADRs, READMEs that explain the trade-offs) and run tests in CI as well as locally.
 
+My commercial code is under NDA, so this profile holds pet projects and take-home assignments.
+
 Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www.linkedin.com/in/nikolay-yaroslavtsev-a6248a241/)
 
 ## Main project

@@ -7,6 +7,8 @@ React, Next.js, TypeScript на фронте; Node.js/NestJS, PostgreSQL, Redis,
 
 Больше всего люблю задачи, где UI упирается в сложный бэкенд: реалтайм и конкурентные правки, идемпотентные платежи, офлайн-очереди, большие объёмы данных. Архитектурные решения записываю (ADR, README с разбором компромиссов), тесты гоняю в CI, а не только локально.
 
+Коммерческий код закрыт NDA, поэтому здесь лежат pet-проекты и тестовые задания.
+
 Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www.linkedin.com/in/nikolay-yaroslavtsev-a6248a241/)
 
 ## Главный проект
