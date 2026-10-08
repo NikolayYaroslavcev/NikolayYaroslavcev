@@ -52,6 +52,10 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 Движок написан на чистом TypeScript: он решает исход раунда по seeded RNG и ничего не знает о рендере, за чем следит правило ESLint. Сцена на PixiJS только анимирует то, что уже решил движок, а store связывает их через узкий интерфейс. Mock-движок реализует тот же `GameEngine`, что и будущий серверный.
 `PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
 
+**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [играть](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): видеослот 5×4 и переиспользуемый SDK для слотов, на котором он собран.
+SDK берёт на себя общее (загрузку, адаптивную раскладку, барабаны, автомат раунда, показ выигрышей), игра добавляет только символы, математику и свои механики. Игра импортирует только SDK, а SDK ничего не знает об играх, за чем следит ESLint. Раунд целиком считает сервер (пока mock с seeded RNG) и отдаёт списком шагов, клиент лишь проигрывает их по порядку. Математику проверяет симулятор на 200 000 раундов без браузера, новая игра создаётся из шаблона одной командой.
+`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
+
 **[Task Manager](https://github.com/NikolayYaroslavcev/act-comp)**: многопользовательский менеджер задач с Kanban, зависимостями между задачами, таймерами с учётом рабочего календаря, откатом версий и экспортом в CSV/PDF/Excel.
 Слои entities / features / widgets: бизнес-логика вынесена в чистые функции, API-роуты тонкие (auth → фича с проверкой прав → JSON). 2000+ тестов.
 `Next.js 16` `Redux Toolkit` `RTK Query` `Zod` `shadcn/ui`

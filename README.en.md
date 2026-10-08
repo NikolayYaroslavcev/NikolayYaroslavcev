@@ -52,6 +52,10 @@ The rules live in a `game-core` package of pure deterministic functions with no 
 The engine is plain TypeScript: it decides the round outcome with a seeded RNG and knows nothing about rendering, which an ESLint rule enforces. The PixiJS scene only animates what the engine has already decided, and a store connects them through a narrow interface. The mock engine implements the same `GameEngine` as the future server-side one.
 `PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
 
+**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [play](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): a 5×4 video slot and the reusable slot SDK it is built on.
+The SDK owns the shared parts (loading, responsive layout, reels, the round state machine, win presentation), so a game only adds its symbols, math and mechanics. The game imports only the SDK and the SDK knows nothing about games, which ESLint enforces. The server (a seeded-RNG mock for now) computes the whole round and returns it as a list of steps that the client just plays back in order. A headless simulator checks the math over 200,000 rounds, and a new game is scaffolded from a template with one command.
+`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
+
 **[Task Manager](https://github.com/NikolayYaroslavcev/act-comp)**: a multi-user task manager with Kanban, task dependencies, timers that respect a working calendar, version rollback and CSV/PDF/Excel export.
 Layered as entities / features / widgets: business logic lives in pure functions, API routes stay thin (auth → feature with permission check → JSON). 2000+ tests.
 `Next.js 16` `Redux Toolkit` `RTK Query` `Zod` `shadcn/ui`
