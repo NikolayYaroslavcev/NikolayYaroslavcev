@@ -32,6 +32,10 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 Конфликт правок решает один атомарный `UPDATE ... WHERE version = ?`, а не клиентские таймстемпы. Порядок задач хранится в fractional-index строках, параллельные перестановки сериализует advisory lock в Postgres, и это работает при любом числе инстансов бэкенда. Офлайн-очередь на клиенте, идемпотентность по `operationId` с записью в БД, presence, права проверяются на сервере на каждом REST- и WS-входе.
 `NestJS` `Prisma` `PostgreSQL` `Socket.IO` `Next.js` `dnd-kit`
 
+**[Стройконтроль](https://github.com/NikolayYaroslavcev/construction-task-crm)**: мини-CRM для строек. Постановщик ставит задачи по объектам, исполнители берут их в работу и сдают на проверку, каждое действие попадает в историю.
+Права проверяет база, а не интерфейс: RLS на всех таблицах, статус меняется только SQL-функцией, которая проверяет допустимость перехода, блокирует строку и в той же транзакции пишет историю. Историю не может изменить никто, роль не хранится в метаданных, которые клиент пишет сам, учётные записи создаёт Edge Function. Отдельный интеграционный тест отправляет запрещённые запросы прямо в живой API.
+`React 19` `Supabase` `PostgreSQL` `TanStack Query` `Zod` `Tailwind CSS 4`
+
 **[Million Items Manager](https://github.com/NikolayYaroslavcev/million-items-manager)** · [демо](https://million-items-manager.onrender.com): два списка поверх миллиона элементов с фильтром, подгрузкой порциями и drag-and-drop сортировкой.
 Состояние живёт на сервере и общее для всех открытых вкладок, изменения расходятся по SSE. В CI проходят lint, typecheck, unit и integration, тесты на полном наборе в миллион элементов, Playwright против production-сборки, минутная нагрузка на 200 соединений и smoke Docker-образа с проверкой корректной остановки.
 `Express` `React` `Vite` `zod` `Vitest` `Playwright` `pnpm workspaces`
@@ -48,7 +52,7 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 Правила вынесены в пакет `game-core` из чистых детерминированных функций без зависимостей от React, Phaser или NestJS. Ходы валидирует сервер, клиент видит только свою часть состояния, после переподключения сессия восстанавливается.
 `NestJS` `Socket.IO` `Next.js` `Phaser` `pnpm monorepo`
 
-**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [играть](https://NikolayYaroslavcev.github.io/chicken-crossing-pixi/): пошаговая crash-игра в духе Chicken Road.
+**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [играть](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): пошаговая crash-игра в духе Chicken Road.
 Движок написан на чистом TypeScript: он решает исход раунда по seeded RNG и ничего не знает о рендере, за чем следит правило ESLint. Сцена на PixiJS только анимирует то, что уже решил движок, а store связывает их через узкий интерфейс. Mock-движок реализует тот же `GameEngine`, что и будущий серверный.
 `PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
 
@@ -68,7 +72,18 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 WebSocket-чат с оптимистичной отправкой, гарантией порядка сообщений, офлайн-очередью и автопереподключением написан вручную, без клиентских библиотек. Список встреч префетчится на сервере и гидрируется на клиенте.
 `Next.js` `TanStack Query` `WebSocket` `Tailwind CSS 4`
 
+**[Currency Exchange Widget](https://github.com/NikolayYaroslavcev/raison)**: форма обмена валют с курсом из API.
+Слой данных на Effect-TS: устаревший запрос курса не отсекается флагом `ignore`, а прерывается вместе со своим Fiber. Сумма описана branded-типом, состояние запроса discriminated union, а транспортные и validation-ошибки сводятся к одному типизированному `RateFetchError`.
+`React 19` `Effect-TS` `TypeScript` `Vitest`
+
 ## Продуктовый фронтенд
+
+**[Subscription Usage Widget](https://github.com/NikolayYaroslavcev/intera)** · [демо](https://nikolayyaroslavcev.github.io/intera/): виджет расхода лимитов телеком-подписок для дашборд-платформы.
+Одна карточка в четырёх размерах сетки, от полной ширины до четверти, с container queries, светлой и тёмной темой и состояниями loading, refreshing, stale, error и empty. Нетипизированные params читаются защитно, расчёт вынесен в чистую функцию без React. 153 теста, демо деплоится из CI после typecheck и тестов.
+`React 19` `TypeScript` `Vite` `Vitest`
+
+**[снэпбилд](https://github.com/NikolayYaroslavcev/snap)** · [демо](https://nikolayyaroslavcev.github.io/snap/): лендинг snapbuild.ru, пересобранный на Next.js. Все 11 исходных секций плюс пять новых (тарифы, отзывы, кейсы, интеграции, форма обратной связи), встроенных в общий поток страницы.
+`Next.js 16` `React 19` `Tailwind CSS` `Vitest`
 
 **[VRental](https://github.com/NikolayYaroslavcev/vr-rental)** · [демо](https://nikolayyaroslavcev.github.io/vr-rental/): сайт моего бывшего проката VR-шлемов и Telegram-бот для заявок. Статический экспорт Next.js, SEO с JSON-LD, каталог из 80+ игр. Бот на голом `fetch` и long polling, без зависимостей.
 `Next.js 16` `Tailwind CSS 4` `Framer Motion`
@@ -80,8 +95,8 @@ WebSocket-чат с оптимистичной отправкой, гарант�
 
 ## Стек
 
-**Frontend:** React, Next.js, TypeScript, Redux Toolkit / RTK Query, TanStack Query, Zustand, Vue 3, PixiJS, Tailwind CSS
+**Frontend:** React, Next.js, TypeScript, Redux Toolkit / RTK Query, TanStack Query, Zustand, Vue 3, PixiJS, Tailwind CSS, Electron, Tauri
 
-**Backend:** Node.js, NestJS, Fastify, Express, FastAPI, PostgreSQL, Prisma, Redis, BullMQ, GraphQL, REST, WebSocket / Socket.IO
+**Backend:** Node.js, NestJS, Fastify, Express, FastAPI, PostgreSQL, Supabase, Prisma, Redis, BullMQ, GraphQL, REST, WebSocket / Socket.IO
 
 **Качество и инфраструктура:** Vitest, Jest, Playwright, GitHub Actions, Docker, Turborepo, pnpm workspaces

@@ -32,6 +32,10 @@ Test assignments and pet projects where the interesting part is under the UI. Ea
 Edit conflicts are resolved by a single atomic `UPDATE ... WHERE version = ?` instead of client timestamps. Task order is stored as fractional-index strings, concurrent reorders are serialized by a Postgres advisory lock, and this holds for any number of backend instances. Client-side offline queue, idempotency by `operationId` persisted in the DB, presence, and permissions checked on the server at every REST and WS entry point.
 `NestJS` `Prisma` `PostgreSQL` `Socket.IO` `Next.js` `dnd-kit`
 
+**[Construction Task CRM](https://github.com/NikolayYaroslavcev/construction-task-crm)**: a mini-CRM for construction sites. A manager assigns tasks per site, workers take them on and submit them for review, and every action lands in the task history.
+Permissions are enforced by the database, not the UI: RLS on every table, and status changes only through a SQL function that checks the transition, locks the row and writes the history in the same transaction. Nobody can edit the history, the role is not kept in metadata the client writes itself, and accounts are created by an Edge Function. A separate integration test fires forbidden requests straight at the live API.
+`React 19` `Supabase` `PostgreSQL` `TanStack Query` `Zod` `Tailwind CSS 4`
+
 **[Million Items Manager](https://github.com/NikolayYaroslavcev/million-items-manager)** · [demo](https://million-items-manager.onrender.com): two lists over a million items with filtering, chunked loading and drag-and-drop sorting.
 State lives on the server and is shared by all open tabs; changes fan out over SSE. CI runs lint, typecheck, unit and integration tests, tests against the full million-item set, Playwright against the production build, a one-minute load test with 200 connections, and a Docker image smoke test that checks graceful shutdown.
 `Express` `React` `Vite` `zod` `Vitest` `Playwright` `pnpm workspaces`
@@ -48,7 +52,7 @@ Most of the work went into correctness: user identification, attribution, event 
 The rules live in a `game-core` package of pure deterministic functions with no dependency on React, Phaser or NestJS. The server validates moves, each client sees only its own part of the state, and the session is restored after a reconnect.
 `NestJS` `Socket.IO` `Next.js` `Phaser` `pnpm monorepo`
 
-**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [play](https://NikolayYaroslavcev.github.io/chicken-crossing-pixi/): a turn-based crash game in the spirit of Chicken Road.
+**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [play](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): a turn-based crash game in the spirit of Chicken Road.
 The engine is plain TypeScript: it decides the round outcome with a seeded RNG and knows nothing about rendering, which an ESLint rule enforces. The PixiJS scene only animates what the engine has already decided, and a store connects them through a narrow interface. The mock engine implements the same `GameEngine` as the future server-side one.
 `PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
 
@@ -68,7 +72,18 @@ The payment and the subscription are written in one transaction via `INSERT ... 
 The WebSocket chat with optimistic sends, guaranteed message order, an offline queue and auto-reconnect is written by hand, without client libraries. The meetings list is prefetched on the server and hydrated on the client.
 `Next.js` `TanStack Query` `WebSocket` `Tailwind CSS 4`
 
+**[Currency Exchange Widget](https://github.com/NikolayYaroslavcev/raison)**: a currency exchange form with rates from an API.
+The data layer is built on Effect-TS: a stale rate request is not filtered out with an `ignore` flag but interrupted together with its Fiber. The amount is a branded type, the request state is a discriminated union, and transport and validation errors collapse into one typed `RateFetchError`.
+`React 19` `Effect-TS` `TypeScript` `Vitest`
+
 ## Product frontend
+
+**[Subscription Usage Widget](https://github.com/NikolayYaroslavcev/intera)** · [demo](https://nikolayyaroslavcev.github.io/intera/): a widget that tracks telecom subscription limit usage for a dashboard platform.
+One card in four grid sizes, from full width down to a quarter, with container queries, light and dark themes, and loading, refreshing, stale, error and empty states. Untyped params are read defensively, and the computation is a pure function with no React in it. 153 tests; the demo deploys from CI after typecheck and tests pass.
+`React 19` `TypeScript` `Vite` `Vitest`
+
+**[snapbuild](https://github.com/NikolayYaroslavcev/snap)** · [demo](https://nikolayyaroslavcev.github.io/snap/): the snapbuild.ru landing page rebuilt in Next.js. All 11 original sections plus five new ones (pricing, testimonials, use cases, integrations, a contact form), woven into the page flow.
+`Next.js 16` `React 19` `Tailwind CSS` `Vitest`
 
 **[VRental](https://github.com/NikolayYaroslavcev/vr-rental)** · [demo](https://nikolayyaroslavcev.github.io/vr-rental/): the website of my former VR headset rental business plus a Telegram bot for bookings. Next.js static export, SEO with JSON-LD, a catalog of 80+ games. The bot uses plain `fetch` and long polling, with no dependencies.
 `Next.js 16` `Tailwind CSS 4` `Framer Motion`
@@ -80,8 +95,8 @@ Everything else is in the [Repositories](https://github.com/NikolayYaroslavcev?t
 
 ## Stack
 
-**Frontend:** React, Next.js, TypeScript, Redux Toolkit / RTK Query, TanStack Query, Zustand, Vue 3, PixiJS, Tailwind CSS
+**Frontend:** React, Next.js, TypeScript, Redux Toolkit / RTK Query, TanStack Query, Zustand, Vue 3, PixiJS, Tailwind CSS, Electron, Tauri
 
-**Backend:** Node.js, NestJS, Fastify, Express, FastAPI, PostgreSQL, Prisma, Redis, BullMQ, GraphQL, REST, WebSocket / Socket.IO
+**Backend:** Node.js, NestJS, Fastify, Express, FastAPI, PostgreSQL, Supabase, Prisma, Redis, BullMQ, GraphQL, REST, WebSocket / Socket.IO
 
 **Quality and infrastructure:** Vitest, Jest, Playwright, GitHub Actions, Docker, Turborepo, pnpm workspaces
