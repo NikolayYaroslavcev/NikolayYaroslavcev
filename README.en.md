@@ -32,7 +32,7 @@ Test assignments and pet projects where the interesting part is under the UI. Ea
 Edit conflicts are resolved by a single atomic `UPDATE ... WHERE version = ?` instead of client timestamps. Task order is stored as fractional-index strings, concurrent reorders are serialized by a Postgres advisory lock, and this holds for any number of backend instances. Client-side offline queue, idempotency by `operationId` persisted in the DB, presence, and permissions checked on the server at every REST and WS entry point.
 `NestJS` `Prisma` `PostgreSQL` `Socket.IO` `Next.js` `dnd-kit`
 
-**[Construction Task CRM](https://github.com/NikolayYaroslavcev/construction-task-crm)**: a mini-CRM for construction sites. A manager assigns tasks per site, workers take them on and submit them for review, and every action lands in the task history.
+**[Construction Task CRM](https://github.com/NikolayYaroslavcev/construction-task-crm)** · [demo](https://construction-task-crm.netlify.app) (test logins in the README): a mini-CRM for construction sites. A manager assigns tasks per site, workers take them on and submit them for review, and every action lands in the task history.
 Permissions are enforced by the database, not the UI: RLS on every table, and status changes only through a SQL function that checks the transition, locks the row and writes the history in the same transaction. Nobody can edit the history, the role is not kept in metadata the client writes itself, and accounts are created by an Edge Function. A separate integration test fires forbidden requests straight at the live API.
 `React 19` `Supabase` `PostgreSQL` `TanStack Query` `Zod` `Tailwind CSS 4`
 
