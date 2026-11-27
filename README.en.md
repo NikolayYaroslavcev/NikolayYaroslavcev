@@ -24,6 +24,16 @@ An AI career workspace, built solo. It collects vacancies from job boards and AT
 
 `TypeScript` `Fastify` `Next.js` `BullMQ` `PostgreSQL` `Redis` `Turborepo` `Docker`
 
+## PixiJS games
+
+**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [play](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): a 5×4 video slot and the slot SDK it is built on.
+The SDK holds everything shared: loading, landscape and portrait layout, reels, the round state machine, win presentation. The game keeps its symbols, math and its own mechanics, like the octopus "Grab". Dependencies point one way, from game to SDK, and ESLint rejects the reverse import. The server (a seeded-RNG mock for now) computes the whole round and sends a list of steps for the client to play back. I check RTP with a headless simulator over 200,000 rounds. A new game is scaffolded from a template with one command.
+`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
+
+**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [play](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): a turn-based crash game in the spirit of Chicken Road.
+The engine is plain TypeScript: it decides the round outcome with a seeded RNG and knows nothing about rendering, which an ESLint rule enforces. The PixiJS scene only animates what the engine has already decided, and a store connects them through a narrow interface. The mock engine implements the same `GameEngine` as the future server-side one.
+`PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
+
 ## Engineering problems
 
 Test assignments and pet projects where the interesting part is under the UI. Each README explains the decisions behind it.
@@ -52,14 +62,6 @@ Most of the work went into correctness: user identification, attribution, event 
 The rules live in a `game-core` package of pure deterministic functions with no dependency on React, Phaser or NestJS. The server validates moves, each client sees only its own part of the state, and the session is restored after a reconnect.
 `NestJS` `Socket.IO` `Next.js` `Phaser` `pnpm monorepo`
 
-**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [play](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): a turn-based crash game in the spirit of Chicken Road.
-The engine is plain TypeScript: it decides the round outcome with a seeded RNG and knows nothing about rendering, which an ESLint rule enforces. The PixiJS scene only animates what the engine has already decided, and a store connects them through a narrow interface. The mock engine implements the same `GameEngine` as the future server-side one.
-`PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
-
-**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [play](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): a 5×4 video slot and the slot SDK it is built on.
-The SDK holds everything shared: loading, landscape and portrait layout, reels, the round state machine, win presentation. The game keeps its symbols, math and its own mechanics, like the octopus "Grab". Dependencies point one way, from game to SDK, and ESLint rejects the reverse import. The server (a seeded-RNG mock for now) computes the whole round and sends a list of steps for the client to play back. I check RTP with a headless simulator over 200,000 rounds. A new game is scaffolded from a template with one command.
-`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
-
 **[Task Manager](https://github.com/NikolayYaroslavcev/act-comp)**: a multi-user task manager with Kanban, task dependencies, timers that respect a working calendar, version rollback and CSV/PDF/Excel export.
 Layered as entities / features / widgets: business logic lives in pure functions, API routes stay thin (auth → feature with permission check → JSON). 2000+ tests.
 `Next.js 16` `Redux Toolkit` `RTK Query` `Zod` `shadcn/ui`
@@ -71,6 +73,10 @@ The payment and the subscription are written in one transaction via `INSERT ... 
 **[MedChat](https://github.com/NikolayYaroslavcev/MedChat)**: a medical support dashboard.
 The WebSocket chat with optimistic sends, guaranteed message order, an offline queue and auto-reconnect is written by hand, without client libraries. The meetings list is prefetched on the server and hydrated on the client.
 `Next.js` `TanStack Query` `WebSocket` `Tailwind CSS 4`
+
+**[Integration Pulse](https://github.com/NikolayYaroslavcev/integration-monitor)**: a service that shows how many webhooks from CRMs and other systems went through, where the errors are and what broke in each case.
+Strict zod validation (an extra field like `staus` is an error, not an event without a status), one error format and 400/409/413/415 codes. New events reach every open tab over SSE, with polling while the connection is down. Filters and the open event live in the URL, and the list switches between a table and cards through container queries. 25 API tests and 19 browser tests on desktop and phone, runs in Docker.
+`Express 5` `zod` `React 19` `Vite` `SSE` `Vitest` `Playwright` `Docker`
 
 **[Currency Exchange Widget](https://github.com/NikolayYaroslavcev/raison)**: a currency exchange form with rates from an API.
 The data layer is built on Effect-TS: a stale rate request is not filtered out with an `ignore` flag but interrupted together with its Fiber. The amount is a branded type, the request state is a discriminated union, and transport and validation errors collapse into one typed `RateFetchError`.
@@ -88,8 +94,26 @@ One card in four grid sizes, from full width down to a quarter, with container q
 **[VRental](https://github.com/NikolayYaroslavcev/vr-rental)** · [demo](https://nikolayyaroslavcev.github.io/vr-rental/): the website of my former VR headset rental business plus a Telegram bot for bookings. Next.js static export, SEO with JSON-LD, a catalog of 80+ games. The bot uses plain `fetch` and long polling, with no dependencies.
 `Next.js 16` `Tailwind CSS 4` `Framer Motion`
 
+**[Quote Builder](https://github.com/NikolayYaroslavcev/kp-builder-prototype)** · [demo](https://nikolayyaroslavcev.github.io/kp-builder-prototype/): an internal sales tool that builds a quote for a Bitrix24 deal from PIM catalog products.
+SKU suggestions, pasting a list from a client's email with per-line checks, VAT and discounts recalculated as you type. Each case has its own check: product discontinued, price stale or changed after it went into the draft, discount above the manager's limit, PIM not responding. The PIM API mock sits in one module, so connecting the real API changes only that module. It runs with no build step and no dependencies.
+`JavaScript` `ES modules` `Bitrix24 API`
+
+**[Mze Estate](https://github.com/NikolayYaroslavcev/batumi-realty-demo)** · [demo](https://nikolayyaroslavcev.github.io/batumi-realty-demo/): a catalog of new-build apartments in Batumi with filters, an apartment page, an installment calculator and a request form for the sales manager.
+Filter state is kept in the URL, so a selection can be shared as a link. RU/EN, four currencies, an OpenStreetMap district map, a filter sheet on phones. The data layer follows the contract of a future `GET /api/listings`, and the README explains how the demo becomes production.
+`Next.js 16` `React 19` `TypeScript` `Tailwind CSS 4`
+
+**[Reply Tool](https://github.com/NikolayYaroslavcev/reply-tool-prototype)** · [demo](https://nikolayyaroslavcev.github.io/reply-tool-prototype/): a form that suggests replies to a message, with every state spelled out.
+State is a discriminated union with a reducer. Resubmitting aborts the previous request through `AbortController`, a late response is dropped by id, and on 429 the button waits out `Retry-After` with a countdown. Server scenarios (network error, timeout, rate limit) can be switched right on the page.
+`React 19` `TypeScript` `Vite` `Vitest`
+
 **[AI Overlay](https://github.com/NikolayYaroslavcev/ai-overlay-test)**: a desktop chat overlay on top of all windows, with AI responses streamed over WebSocket.
 `Tauri 2` `Rust` `Vue 3` `Pinia`
+
+## Tools
+
+**[Battery Tray](https://github.com/NikolayYaroslavcev/battery-tray)** · [download](https://github.com/NikolayYaroslavcev/battery-tray/releases/latest): battery levels of wireless headsets, mice, keyboards and controllers on the Windows taskbar, next to the clock.
+I wrote it because Razer Synapse 4 doesn't see my Barracuda X 2.4 headset. The program parses each dongle's HID report descriptor and picks the protocol itself: Razer, Logitech HID++ 2.0, DualShock 4, Bluetooth devices through Windows. It installs without admin rights, updates from GitHub Releases with a SHA-256 check, and the exe is built by GitHub Actions from the tagged commit.
+`Python` `HID` `PyInstaller` `GitHub Actions`
 
 Everything else is in the [Repositories](https://github.com/NikolayYaroslavcev?tab=repositories) tab.
 

@@ -24,6 +24,16 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 
 `TypeScript` `Fastify` `Next.js` `BullMQ` `PostgreSQL` `Redis` `Turborepo` `Docker`
 
+## Игры на PixiJS
+
+**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [играть](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): видеослот 5×4 и SDK для слотов, на котором он собран.
+В SDK лежит всё общее: загрузка, раскладка под альбомную и портретную ориентацию, барабаны, автомат раунда, показ выигрышей. Игре остаются символы, математика и свои механики вроде «Хватки» осьминога. Зависимость идёт только от игры к SDK, обратный импорт ESLint не пропустит. Сервер (пока mock с seeded RNG) считает раунд целиком и присылает список шагов, а клиент их проигрывает. RTP проверяю симулятором на 200 000 раундов без браузера. Новая игра поднимается из шаблона одной командой.
+`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
+
+**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [играть](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): пошаговая crash-игра в духе Chicken Road.
+Движок написан на чистом TypeScript: он решает исход раунда по seeded RNG и ничего не знает о рендере, за чем следит правило ESLint. Сцена на PixiJS только анимирует то, что уже решил движок, а store связывает их через узкий интерфейс. Mock-движок реализует тот же `GameEngine`, что и будущий серверный.
+`PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
+
 ## Инженерные задачи
 
 Тестовые задания и pet-проекты, в которых самое интересное спрятано под UI. В каждом README есть разбор решений.
@@ -52,14 +62,6 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 Правила вынесены в пакет `game-core` из чистых детерминированных функций без зависимостей от React, Phaser или NestJS. Ходы валидирует сервер, клиент видит только свою часть состояния, после переподключения сессия восстанавливается.
 `NestJS` `Socket.IO` `Next.js` `Phaser` `pnpm monorepo`
 
-**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [играть](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): пошаговая crash-игра в духе Chicken Road.
-Движок написан на чистом TypeScript: он решает исход раунда по seeded RNG и ничего не знает о рендере, за чем следит правило ESLint. Сцена на PixiJS только анимирует то, что уже решил движок, а store связывает их через узкий интерфейс. Mock-движок реализует тот же `GameEngine`, что и будущий серверный.
-`PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
-
-**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [играть](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): видеослот 5×4 и SDK для слотов, на котором он собран.
-В SDK лежит всё общее: загрузка, раскладка под альбомную и портретную ориентацию, барабаны, автомат раунда, показ выигрышей. Игре остаются символы, математика и свои механики вроде «Хватки» осьминога. Зависимость идёт только от игры к SDK, обратный импорт ESLint не пропустит. Сервер (пока mock с seeded RNG) считает раунд целиком и присылает список шагов, а клиент их проигрывает. RTP проверяю симулятором на 200 000 раундов без браузера. Новая игра поднимается из шаблона одной командой.
-`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
-
 **[Task Manager](https://github.com/NikolayYaroslavcev/act-comp)**: многопользовательский менеджер задач с Kanban, зависимостями между задачами, таймерами с учётом рабочего календаря, откатом версий и экспортом в CSV/PDF/Excel.
 Слои entities / features / widgets: бизнес-логика вынесена в чистые функции, API-роуты тонкие (auth → фича с проверкой прав → JSON). 2000+ тестов.
 `Next.js 16` `Redux Toolkit` `RTK Query` `Zod` `shadcn/ui`
@@ -71,6 +73,10 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 **[MedChat](https://github.com/NikolayYaroslavcev/MedChat)**: дашборд медицинской поддержки.
 WebSocket-чат с оптимистичной отправкой, гарантией порядка сообщений, офлайн-очередью и автопереподключением написан вручную, без клиентских библиотек. Список встреч префетчится на сервере и гидрируется на клиенте.
 `Next.js` `TanStack Query` `WebSocket` `Tailwind CSS 4`
+
+**[Пульс интеграций](https://github.com/NikolayYaroslavcev/integration-monitor)**: сервис, который показывает, сколько вебхуков от CRM и других систем прошло, где ошибки и что сломалось в каждом случае.
+Строгая валидация на zod (лишнее поле вроде `staus` даёт ошибку, а не событие без статуса), единый формат ошибок и коды 400/409/413/415. Новые события расходятся по всем вкладкам через SSE, при обрыве список подтягивается опросом. Фильтры и открытое событие живут в URL, список переключается между таблицей и карточками через container queries. 25 тестов API и 19 браузерных на десктопе и телефоне, запуск в Docker.
+`Express 5` `zod` `React 19` `Vite` `SSE` `Vitest` `Playwright` `Docker`
 
 **[Currency Exchange Widget](https://github.com/NikolayYaroslavcev/raison)**: форма обмена валют с курсом из API.
 Слой данных на Effect-TS: устаревший запрос курса не отсекается флагом `ignore`, а прерывается вместе со своим Fiber. Сумма описана branded-типом, состояние запроса discriminated union, а транспортные и validation-ошибки сводятся к одному типизированному `RateFetchError`.
@@ -88,8 +94,26 @@ WebSocket-чат с оптимистичной отправкой, гарант�
 **[VRental](https://github.com/NikolayYaroslavcev/vr-rental)** · [демо](https://nikolayyaroslavcev.github.io/vr-rental/): сайт моего бывшего проката VR-шлемов и Telegram-бот для заявок. Статический экспорт Next.js, SEO с JSON-LD, каталог из 80+ игр. Бот на голом `fetch` и long polling, без зависимостей.
 `Next.js 16` `Tailwind CSS 4` `Framer Motion`
 
+**[Сборка КП](https://github.com/NikolayYaroslavcev/kp-builder-prototype)** · [демо](https://nikolayyaroslavcev.github.io/kp-builder-prototype/): внутренний инструмент менеджера, собирает коммерческое предложение по сделке из Битрикс24 из товаров каталога PIM.
+Подсказки по артикулу, вставка списка из письма клиента с проверкой строк, пересчёт НДС и скидок на лету. На каждый случай своя проверка: товар снят с продажи, цена устарела или изменилась после добавления в черновик, скидка выше лимита менеджера, PIM не отвечает. Имитация API PIM лежит в одном модуле, и при подключении настоящего API меняется только он. Работает без сборки и зависимостей.
+`JavaScript` `ES-модули` `Bitrix24 API`
+
+**[Mze Estate](https://github.com/NikolayYaroslavcev/batumi-realty-demo)** · [демо](https://nikolayyaroslavcev.github.io/batumi-realty-demo/): каталог новостроек Батуми с фильтрами, карточкой квартиры, калькулятором рассрочки и заявкой менеджеру.
+Состояние фильтров хранится в URL, поэтому подборкой можно поделиться ссылкой. RU/EN, четыре валюты, карта района на OpenStreetMap, шторка фильтров на телефоне. Слой данных повторяет контракт будущего `GET /api/listings`, а в README расписано, как демо становится продакшеном.
+`Next.js 16` `React 19` `TypeScript` `Tailwind CSS 4`
+
+**[Reply Tool](https://github.com/NikolayYaroslavcev/reply-tool-prototype)** · [демо](https://nikolayyaroslavcev.github.io/reply-tool-prototype/): форма подбора ответа на сообщение, в которой каждое состояние описано явно.
+Состояние задано discriminated union и reducer. Повторная отправка отменяет прошлый запрос через `AbortController`, опоздавший ответ отбрасывается по id, на 429 кнопка ждёт `Retry-After` с обратным отсчётом. Сценарии сервера (ошибка сети, таймаут, лимит) переключаются прямо на странице.
+`React 19` `TypeScript` `Vite` `Vitest`
+
 **[AI Overlay](https://github.com/NikolayYaroslavcev/ai-overlay-test)**: десктопный оверлей-чат поверх всех окон, AI-ответы приходят стримом по WebSocket.
 `Tauri 2` `Rust` `Vue 3` `Pinia`
+
+## Инструменты
+
+**[Battery Tray](https://github.com/NikolayYaroslavcev/battery-tray)** · [скачать](https://github.com/NikolayYaroslavcev/battery-tray/releases/latest): заряд беспроводных наушников, мышей, клавиатур и геймпадов на панели задач Windows рядом с часами.
+Написал, потому что Razer Synapse 4 не видит мою гарнитуру Barracuda X 2.4. Программа разбирает HID report descriptor каждого донгла и сама выбирает протокол: Razer, Logitech HID++ 2.0, DualShock 4, Bluetooth-устройства через Windows. Ставится без прав администратора, обновляется из GitHub Releases с проверкой SHA-256, exe собирает GitHub Actions из коммита с тегом.
+`Python` `HID` `PyInstaller` `GitHub Actions`
 
 Остальное лежит во вкладке [Repositories](https://github.com/NikolayYaroslavcev?tab=repositories).
 
