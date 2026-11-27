@@ -24,16 +24,6 @@ Telegram: [@aquariumlifee](https://t.me/aquariumlifee) · [LinkedIn](https://www
 
 `TypeScript` `Fastify` `Next.js` `BullMQ` `PostgreSQL` `Redis` `Turborepo` `Docker`
 
-## Игры на PixiJS
-
-**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [играть](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): видеослот 5×4 и SDK для слотов, на котором он собран.
-В SDK лежит всё общее: загрузка, раскладка под альбомную и портретную ориентацию, барабаны, автомат раунда, показ выигрышей. Игре остаются символы, математика и свои механики вроде «Хватки» осьминога. Зависимость идёт только от игры к SDK, обратный импорт ESLint не пропустит. Сервер (пока mock с seeded RNG) считает раунд целиком и присылает список шагов, а клиент их проигрывает. RTP проверяю симулятором на 200 000 раундов без браузера. Новая игра поднимается из шаблона одной командой.
-`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
-
-**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [играть](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): пошаговая crash-игра в духе Chicken Road.
-Движок написан на чистом TypeScript: он решает исход раунда по seeded RNG и ничего не знает о рендере, за чем следит правило ESLint. Сцена на PixiJS только анимирует то, что уже решил движок, а store связывает их через узкий интерфейс. Mock-движок реализует тот же `GameEngine`, что и будущий серверный.
-`PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
-
 ## Инженерные задачи
 
 Тестовые задания и pet-проекты, в которых самое интересное спрятано под UI. В каждом README есть разбор решений.
@@ -81,6 +71,16 @@ WebSocket-чат с оптимистичной отправкой, гарант�
 **[Currency Exchange Widget](https://github.com/NikolayYaroslavcev/raison)**: форма обмена валют с курсом из API.
 Слой данных на Effect-TS: устаревший запрос курса не отсекается флагом `ignore`, а прерывается вместе со своим Fiber. Сумма описана branded-типом, состояние запроса discriminated union, а транспортные и validation-ошибки сводятся к одному типизированному `RateFetchError`.
 `React 19` `Effect-TS` `TypeScript` `Vitest`
+
+## Игры на PixiJS
+
+**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [играть](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): видеослот 5×4 и SDK для слотов, на котором он собран.
+В SDK лежит всё общее: загрузка, раскладка под альбомную и портретную ориентацию, барабаны, автомат раунда, показ выигрышей. Игре остаются символы, математика и свои механики вроде «Хватки» осьминога. Зависимость идёт только от игры к SDK, обратный импорт ESLint не пропустит. Сервер (пока mock с seeded RNG) считает раунд целиком и присылает список шагов, а клиент их проигрывает. RTP проверяю симулятором на 200 000 раундов без браузера. Новая игра поднимается из шаблона одной командой.
+`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
+
+**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [играть](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): пошаговая crash-игра в духе Chicken Road.
+Движок написан на чистом TypeScript: он решает исход раунда по seeded RNG и ничего не знает о рендере, за чем следит правило ESLint. Сцена на PixiJS только анимирует то, что уже решил движок, а store связывает их через узкий интерфейс. Mock-движок реализует тот же `GameEngine`, что и будущий серверный.
+`PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
 
 ## Продуктовый фронтенд
 

@@ -24,16 +24,6 @@ An AI career workspace, built solo. It collects vacancies from job boards and AT
 
 `TypeScript` `Fastify` `Next.js` `BullMQ` `PostgreSQL` `Redis` `Turborepo` `Docker`
 
-## PixiJS games
-
-**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [play](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): a 5×4 video slot and the slot SDK it is built on.
-The SDK holds everything shared: loading, landscape and portrait layout, reels, the round state machine, win presentation. The game keeps its symbols, math and its own mechanics, like the octopus "Grab". Dependencies point one way, from game to SDK, and ESLint rejects the reverse import. The server (a seeded-RNG mock for now) computes the whole round and sends a list of steps for the client to play back. I check RTP with a headless simulator over 200,000 rounds. A new game is scaffolded from a template with one command.
-`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
-
-**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [play](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): a turn-based crash game in the spirit of Chicken Road.
-The engine is plain TypeScript: it decides the round outcome with a seeded RNG and knows nothing about rendering, which an ESLint rule enforces. The PixiJS scene only animates what the engine has already decided, and a store connects them through a narrow interface. The mock engine implements the same `GameEngine` as the future server-side one.
-`PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
-
 ## Engineering problems
 
 Test assignments and pet projects where the interesting part is under the UI. Each README explains the decisions behind it.
@@ -81,6 +71,16 @@ Strict zod validation (an extra field like `staus` is an error, not an event wit
 **[Currency Exchange Widget](https://github.com/NikolayYaroslavcev/raison)**: a currency exchange form with rates from an API.
 The data layer is built on Effect-TS: a stale rate request is not filtered out with an `ignore` flag but interrupted together with its Fiber. The amount is a branded type, the request state is a discriminated union, and transport and validation errors collapse into one typed `RateFetchError`.
 `React 19` `Effect-TS` `TypeScript` `Vitest`
+
+## PixiJS games
+
+**[Pirate's Fortune / pixi-slot-sdk](https://github.com/NikolayYaroslavcev/pixi-slot-sdk)** · [play](https://nikolayyaroslavcev.github.io/pixi-slot-sdk/): a 5×4 video slot and the slot SDK it is built on.
+The SDK holds everything shared: loading, landscape and portrait layout, reels, the round state machine, win presentation. The game keeps its symbols, math and its own mechanics, like the octopus "Grab". Dependencies point one way, from game to SDK, and ESLint rejects the reverse import. The server (a seeded-RNG mock for now) computes the whole round and sends a list of steps for the client to play back. I check RTP with a headless simulator over 200,000 rounds. A new game is scaffolded from a template with one command.
+`PixiJS 8` `TypeScript` `@pixi/sound` `Vite` `Vitest` `npm workspaces`
+
+**[Chicken Crossing](https://github.com/NikolayYaroslavcev/chicken-crossing-pixi)** · [play](https://nikolayyaroslavcev.github.io/chicken-crossing-pixi/): a turn-based crash game in the spirit of Chicken Road.
+The engine is plain TypeScript: it decides the round outcome with a seeded RNG and knows nothing about rendering, which an ESLint rule enforces. The PixiJS scene only animates what the engine has already decided, and a store connects them through a narrow interface. The mock engine implements the same `GameEngine` as the future server-side one.
+`PixiJS 8` `GSAP` `React 19` `Zustand` `Vitest` `Playwright`
 
 ## Product frontend
 
